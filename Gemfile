@@ -42,6 +42,8 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.5'
   gem 'cucumber-rails', require: false
+  gem 'shoulda-matchers',
+    git: 'https://github.com/thoughtbot/shoulda-matchers.git'
 end
 
 group :development do
