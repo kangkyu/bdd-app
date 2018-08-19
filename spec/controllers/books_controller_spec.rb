@@ -19,7 +19,7 @@ RSpec.describe BooksController, type: :controller do
     end
   end
 
-  describe "POST create" do
+  describe "POST #create" do
     let(:book) { FactoryBot.build_stubbed(:book) }
     let(:params) { { name: "Moby-Dick", author: "Herman Melville" } }
 
@@ -53,6 +53,42 @@ RSpec.describe BooksController, type: :controller do
 
       it "renders the new page again" do
         expect(response).to render_template(:new)
+      end
+    end
+  end
+
+  describe "PATCH #update" do
+    let(:book) { FactoryBot.build_stubbed(:book) }
+
+    before do
+      allow(Book).to receive(:find).and_return(book)
+      allow(book).to receive(:update)
+    end
+
+    it "updates the book" do
+      patch :update, params: { id: book.id, book: { name: "New name" } }
+      expect(book).to have_received(:update)
+    end
+
+    context "when the update succeeds" do
+      before do
+        allow(book).to receive(:update).and_return(true)
+        patch :update, params: { id: book.id, book: { name: "New name" } }
+      end
+
+      it "redirects to the book page" do
+        expect(response).to redirect_to(book_path(book))
+      end
+    end
+
+    context "when the update fails" do
+      before do
+        allow(book).to receive(:update).and_return(false)
+        patch :update, params: { id: book.id, book: { name: "New name" } }
+      end
+
+      it "renders the edit page again" do
+        expect(response).to render_template(:edit)
       end
     end
   end
