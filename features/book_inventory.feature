@@ -20,3 +20,8 @@ Feature: Book Inventory
     Given I have a book in my inventory
     When I change the title of my book
     Then I should see the book with the new title in my inventory
+
+  Scenario: Removing a book from my inventory
+    Given I have a book in my inventory
+    When I remove the book from my inventory
+    Then I should not see it listing in the repository anywhere

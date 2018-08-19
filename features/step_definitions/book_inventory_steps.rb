@@ -47,3 +47,13 @@ Then("I should see the book with the new title in my inventory") do
   expect(page).not_to have_content("War and Peace")
   expect(page).to have_content("Guerra y Paz")
 end
+
+When("I remove the book from my inventory") do
+  visit root_path
+
+  click_link "Destroy"
+end
+
+Then("I should not see it listing in the repository anywhere") do
+  expect(page).not_to have_content("War and Peace")
+end
