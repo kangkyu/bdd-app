@@ -58,7 +58,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include Warden::Test::Helpers
-  config.include Devise::Test::ControllerHelpers
+  config.include Devise::Test::ControllerHelpers, :type => :controller
   config.include ControllerHelpers, :type => :controller
 end
 

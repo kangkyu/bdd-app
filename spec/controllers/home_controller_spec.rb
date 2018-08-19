@@ -1,13 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe HomeController, type: :controller do
+  let(:user) { instance_double(User) }
+
+  before { log_in(user) }
 
   describe "GET #index" do
-    let(:user) { instance_double(User) }
-
-    before do
-      log_in(user)
-    end
 
     it "returns http success" do
       get :index
