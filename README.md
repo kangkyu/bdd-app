@@ -5,4 +5,4 @@
 On reading https://semaphoreci.com/ebooks/rails-testing-handbook
 
 + authenticate users
-+ can keep an inventory of your books
++ can keep an inventory of books
