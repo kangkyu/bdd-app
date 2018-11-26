@@ -6,3 +6,8 @@ On reading https://semaphoreci.com/ebooks/rails-testing-handbook
 
 + authenticate users
 + can keep an inventory of books
+
+```
+cd ~/practicing/book-to-read/rails-testing-handbook/bdd-app
+rspec
+```
